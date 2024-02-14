@@ -13,14 +13,14 @@ class ProductFilterDto
 {
     public ?int $page;
     public ?int $paginate;
-    public ?array $properties;
+    public array $properties;
 
     /**
      * Конструктор.
      */
     public function __construct(array $data)
     {
-        $this->properties = Arr::get($data, 'properties');
+        $this->properties = $data['properties'] ?? [];
         $this->page = Arr::get($data, 'page');
         $this->paginate = Arr::get($data, 'paginate');
     }

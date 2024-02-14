@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Api\Models\Products\Repositories;
 
+use App\Services\Api\Models\Products\Dto\ProductFilterDto;
 use Illuminate\Contracts\Pagination\Paginator;
 
 /**
@@ -14,5 +15,5 @@ interface ProductRepositoryInterface
     /**
      * Получить продукты.
      */
-    public function getProducts(array $data): Paginator;
+    public function getProducts(ProductFilterDto $productFilterDto): Paginator;
 }

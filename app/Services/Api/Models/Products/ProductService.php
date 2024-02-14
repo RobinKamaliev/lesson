@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Api\Models\Products;
 
+use App\Services\Api\Models\Products\Dto\ProductFilterDto;
 use App\Services\Api\Models\Products\Exceptions\ProductNotFoundException;
 use App\Services\Api\Models\Products\Repositories\ProductRepositoryInterface;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -30,7 +31,7 @@ class ProductService
     public function getProducts(array $data): Paginator
     {
         try {
-            return $this->repository->getProducts($data);
+            return $this->repository->getProducts(app(ProductFilterDto::class, ['data' => $data]));
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
